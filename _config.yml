@@ -1,0 +1,31 @@
+title: Writeups
+description: "A collection of writeups for various CTF challenges and security research findings. Hack the box, VulnHub, and more."
+author:
+  name: "0vldr"
+  url: "https://00vld.github.io/"
+
+baseurl: "/writeups"
+
+source: .
+destination: ./_site
+permalink: /:title
+paginate: 3
+paginate_path: /page/:num/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+future: true
+plugins:
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+
+# Custom variables
+owner : "0vld"
+year : "2026"
