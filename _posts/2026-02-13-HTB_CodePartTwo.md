@@ -62,7 +62,7 @@ We will focus entirely on the web service.
 
 Visiting port `8000`:
 
-![](/assets/images/CodePartTwo/1.png)
+![](/assets/CodePartTwo/1.png)
 
 Clicking **Download App** provides `app.zip`.
 
