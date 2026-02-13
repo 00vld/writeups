@@ -62,7 +62,9 @@ We will focus entirely on the web service.
 
 Visiting port `8000`:
 
-![](/assets/CodePartTwo/1.png)
+![]({{ "/assets/images/CodePartTwo/1.png" | relative_url }})
+
+![]({{ "/assets/1.png" | relative_url }})
 
 ![](/assets/1.png)
 
