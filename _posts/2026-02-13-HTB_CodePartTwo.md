@@ -64,6 +64,8 @@ Visiting port `8000`:
 
 ![](/assets/CodePartTwo/1.png)
 
+![](/assets/1.png)
+
 Clicking **Download App** provides `app.zip`.
 
 ![](/assets/images/download-app.png)
