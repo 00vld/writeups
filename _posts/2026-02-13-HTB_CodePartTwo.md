@@ -64,17 +64,11 @@ Visiting port `8000`:
 
 ![]({{ "/assets/images/CodePartTwo/1.png" | relative_url }})
 
-![]({{ "/assets/1.png" | relative_url }})
-
-![](/assets/1.png)
-
 Clicking **Download App** provides `app.zip`.
-
-![](/assets/images/download-app.png)
 
 After extracting the archive, the backend structure is revealed
 
-![](/assets/images/app-structure.png)
+![]({{ "/assets/images/CodePartTwo/2.png" | relative_url }})
 
 ---
 
@@ -220,19 +214,19 @@ We will reference this code later, Lets just login to the website and checkout t
 ---
 
 # Login & Cookie Analysis
-![](/assets/images/dashboard.png)
+![]({{ "/assets/images/CodePartTwo/3.png" | relative_url }})
 
 After login to the page we find ourself with a web `Code Editor` 
 
-![](/assets/images/dashboard.png)
+![]({{ "/assets/images/CodePartTwo/4.png" | relative_url }})
 
 Lets try some simple codes.
 
-![](/assets/images/dashboard.png)
+![]({{ "/assets/images/CodePartTwo/5.png" | relative_url }})
 
 Lets take a look at the cookies.
 
-![](/assets/images/dashboard.png)
+![]({{ "/assets/images/CodePartTwo/6.png" | relative_url }})
 
 we can see that there is a `flask` cookie asigned to us, lets try and decode it using [flask-unsign](https://github.com/Paradoxis/Flask-Unsign) or `pip3 install flask-unsign` ref [Pentest Book](https://www.pentest-book.com/enumeration/webservices/flask)
 
@@ -240,7 +234,7 @@ we can see that there is a `flask` cookie asigned to us, lets try and decode it 
 ❯ flask-unsign --decode --cookie 'eyJ1c2VyX2lkIjozLCJ1c2VybmFtZSI6IjAwdmxkIn0.aYzH6g.YmyeYr2dlLT5nja_pxhnZTdOgnw'
 ```
 
-![](/assets/images/dashboard.png)
+![]({{ "/assets/images/CodePartTwo/7.png" | relative_url }})
 
 So the session cookie is just storing user data, signed with the Flask `secret_key`.
 
@@ -321,11 +315,11 @@ n11
 
 We get an error.
 
-![](/assets/images/CodePartTwo/website-home.png)
+![]({{ "/assets/images/CodePartTwo/8.png" | relative_url }})
 
 Let's try pinging ourselves
 
-![](/assets/images/CodePartTwo/website-home.png)
+![]({{ "/assets/images/CodePartTwo/9.png" | relative_url }})
 
 Received pings from the target. Command execution confirmed.
 
@@ -339,7 +333,7 @@ and let's start a listener
 nc -lvnp 4444
 ```
 
-![](/assets/images/CodePartTwo/website-home.png)
+![]({{ "/assets/images/CodePartTwo/10.png" | relative_url }})
 
 and we get a shell.
 
@@ -411,7 +405,7 @@ Analyzing '649c9d6.......128bce5'
 hashcat -m 0 -a 0 -O 649c9d65a206......128bce5 /usr/share/wordlists/rockyou.txt
 ```
 
-![](/assets/images/CodePartTwo/website-home.png)
+![]({{ "/assets/images/CodePartTwo/11.png" | relative_url }})
 
 ---
 
@@ -677,7 +671,7 @@ Editing the config
 nano /tmp/root.conf
 ```
 
-![](/assets/images/flask-cookie.png)
+![]({{ "/assets/images/CodePartTwo/12.png" | relative_url }})
 
 **Why this works:**
 * When `npbackup-cli` runs as root, it can access `/root/`
@@ -692,7 +686,7 @@ sudo npbackup-cli -c /tmp/root.conf -b --force
 - `-b` - Perform backup operation
 - `--force` - Bypass the `minimum_backup_age: 1440` check (otherwise it won't backup if one exists from last 24 hours)
 
-![](/assets/images/flask-cookie.png)
+![]({{ "/assets/images/CodePartTwo/13.png" | relative_url }})
 
 Backup completed successfully. Now I need to see what's inside it.
 
@@ -806,7 +800,7 @@ To check for new updates run: sudo apt update
 Last login: Fri Feb 13 13:58:40 2026 from 127.0.0.1
 root@codeparttwo:~#
 ```
-![](/assets/images/flask-cookie.png)
+![]({{ "/assets/images/CodePartTwo/14.png" | relative_url }})
 
 Successfully [*Pwned].
 ---
