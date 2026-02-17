@@ -3,11 +3,11 @@ theme: null
 title: Writeups
 description: "A collection of writeups for various CTF challenges and security research findings. Hack the box, VulnHub, and more."
 author:
-  name: "0vldr"
-  url: "https://00vld.github.io/"
+  name: "0vld"
 
+url: "https://00vld.github.io"
 baseurl: "/writeups"
-social_image: "https://github.com/00vld/00vld.github.io/blob/main/images/profile.jpg?raw=true"
+social_image: "/assets/images/profile.png"
 
 source: .
 destination: ./_site
