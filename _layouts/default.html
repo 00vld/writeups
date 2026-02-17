@@ -21,5 +21,16 @@
   {% endif %}
 
   <script src="{{ "/js/main.js" | relative_url }}"></script>
+  
+  <!-- Scrollbar fix script - at the VERY END -->
+  <script>
+    // Force scrollbar style refresh for Chromium browsers
+    document.addEventListener('DOMContentLoaded', function() {
+      document.body.style.overflow = 'auto';
+      setTimeout(function() {
+        window.dispatchEvent(new Event('resize'));
+      }, 100);
+    });
+  </script>
 </body>
 </html>
