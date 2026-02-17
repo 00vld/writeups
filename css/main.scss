@@ -405,3 +405,93 @@ hr {
     transparent 100%);
   margin: 26px 0;
 }
+
+/* =========================
+   SCROLLBARS - ALL BROWSERS (Chrome, Firefox, Edge)
+========================= */
+
+/* Firefox - hide by default */
+* {
+  scrollbar-width: none;
+}
+
+/* Show on hover for Firefox */
+*:hover {
+  scrollbar-width: thin;
+}
+
+/* Chrome, Edge (Chromium), Safari */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+*:hover::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* =========================
+   EDGE SPECIFIC FIXES
+========================= */
+
+/* Edge (non-Chromium legacy) */
+@supports (-ms-ime-align: auto) {
+  pre {
+    -ms-overflow-style: none;
+  }
+  pre:hover {
+    -ms-overflow-style: auto;
+  }
+}
+
+/* Edge Chromium - already covered by webkit above */
+
+/* Code block scrollbars - ALL BROWSERS */
+pre {
+  scrollbar-width: none;
+  -ms-overflow-style: none;  /* Edge/IE */
+}
+
+pre::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+pre:hover {
+  scrollbar-width: thin;
+  -ms-overflow-style: auto;  /* Edge/IE */
+}
+
+pre:hover::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
+}
+
+/* Force hide all wrapper scrollbars */
+.highlight::-webkit-scrollbar,
+.highlight pre::-webkit-scrollbar,
+div.highlight::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
