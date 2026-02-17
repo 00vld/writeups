@@ -28,19 +28,22 @@ html, body {
 }
 
 /* =========================
-   HEADER
+   HEADER - Different font for heading
 ========================= */
 
 header {
-  border-bottom: 2px solid rgba(255,255,255,0.12);
+  border-bottom: 3px solid rgba(255,255,255,0.15);  /* THICKER line */
   padding: 18px 0;
+  margin-bottom: 8px;
 }
 
 header h1 {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 24px;  /* BIGGER */
+  font-weight: 700;
   color: #7aa2f7;
   margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;  /* DIFFERENT font */
+  letter-spacing: -0.3px;
 }
 
 .header-links {
@@ -52,6 +55,7 @@ header h1 {
   color: rgba(255,255,255,0.65);
   text-decoration: none;
   margin-right: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;  /* Back to body font */
 }
 
 .header-links a:hover {
@@ -59,40 +63,45 @@ header h1 {
 }
 
 /* =========================
-   PAGE TITLE (CodePartTwo)
+   PAGE TITLE (CodePartTwo) - DIFFERENT font
 ========================= */
 
 #main_content > h1 {
-  font-size: 24px;
+  font-size: 28px;  /* BIGGER */
   margin: 10px 0 6px 0;
-  font-weight: 600;
+  font-weight: 700;
   color: #8ab4ff;
   border: none;
+  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;  /* DIFFERENT font */
+  letter-spacing: -0.5px;
 }
 
 /* =========================
-   SECTION HEADINGS (Enumeration)
+   SECTION HEADINGS (Enumeration) - DIFFERENT font
 ========================= */
 
 #main_content h2 {
-  font-size: 20px;
+  font-size: 22px;  /* BIGGER */
   font-weight: 600;
   margin: 28px 0 14px 0;
   color: #ffffff;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  padding-bottom: 6px;
+  border-bottom: 3px solid rgba(255,255,255,0.15);  /* THICKER line */
+  padding-bottom: 8px;
+  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;  /* DIFFERENT font */
+  letter-spacing: -0.3px;
 }
 
 /* =========================
-   DATE
+   DATE - MORE GRAY and SUBTLE
 ========================= */
 
 .post-date,
 #main_content small {
   font-size: 13px;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.35);  /* MUCH more subtle/gray */
   margin-bottom: 10px;
   display: block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* =========================
@@ -102,10 +111,11 @@ header h1 {
 #main_content p {
   margin: 14px 0;
   color: rgba(255,255,255,0.78);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* =========================
-   INLINE CODE (visible backticks)
+   INLINE CODE
 ========================= */
 
 code:not(pre code) {
@@ -123,7 +133,7 @@ code:not(pre code) {
 
 pre {
   background: #151a22;
-  border: 1.5px solid rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.15);
   border-radius: 8px;
   padding: 16px;
   margin: 20px 0;
@@ -135,7 +145,6 @@ pre {
   box-shadow: 0 16px 40px rgba(0,0,0,0.55);
 }
 
-/* Remove inner weird background */
 pre code {
   background: transparent !important;
   padding: 0;
@@ -143,7 +152,7 @@ pre code {
 }
 
 /* =========================
-   COPY BUTTON (right side, hidden until hover)
+   COPY BUTTON
 ========================= */
 
 .copy-btn {
@@ -167,39 +176,45 @@ pre:hover .copy-btn {
 }
 
 /* =========================
-   SCROLLBARS - ULTIMATE FIX (completely hidden until hover)
+   SCROLLBARS - WORKS ON ALL BROWSERS (Chrome, Firefox, Edge)
 ========================= */
 
-/* Global scrollbar - hidden by default */
-html {
-  scrollbar-width: none;
+/* Firefox */
+* {
+  scrollbar-width: none;  /* Hide by default */
 }
 
-body::-webkit-scrollbar {
+/* Show on hover for Firefox */
+:hover {
+  scrollbar-width: thin;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
   width: 0;
   height: 0;
   background: transparent;
 }
 
-body:hover::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+:hover::-webkit-scrollbar {
+  width: 5px;  /* THINNER than before */
+  height: 5px;
 }
 
-body::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.3);
-  border-radius: 6px;
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 5px;
 }
 
-body::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.4);
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.35);
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Code block scrollbar - completely hidden until hover */
+/* Code block scrollbars - same behavior */
 pre {
   scrollbar-width: none;
 }
@@ -207,28 +222,23 @@ pre {
 pre::-webkit-scrollbar {
   width: 0;
   height: 0;
-  background: transparent;
+}
+
+pre:hover {
+  scrollbar-width: thin;
 }
 
 pre:hover::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;  /* EVEN THINNER for code blocks */
+  height: 4px;
 }
 
 pre::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,0.3);
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
-pre::-webkit-scrollbar-thumb:hover {
-  background: rgba(255,255,255,0.4);
-}
-
-pre::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Kill any wrapper scrollbars */
+/* Kill all wrapper scrollbars */
 .highlight::-webkit-scrollbar,
 .highlight pre::-webkit-scrollbar,
 div.highlight::-webkit-scrollbar {
@@ -237,10 +247,9 @@ div.highlight::-webkit-scrollbar {
 }
 
 /* =========================
-   SYNTAX HIGHLIGHTING - LANGUAGE COLORS (Bash, Python, PowerShell)
+   SYNTAX HIGHLIGHTING
 ========================= */
 
-/* Base highlight.js container */
 .hljs {
   background: transparent !important;
   color: inherit !important;
@@ -253,152 +262,21 @@ pre code.hljs {
   padding: 0 !important;
 }
 
-/* Keywords - if, else, function, return, etc */
-.hljs-keyword,
-.hljs-keyword strong {
-  color: #ff7b72 !important;
-  font-weight: 600;
-}
+.hljs-keyword { color: #ff7b72 !important; font-weight: 600; }
+.hljs-built_in { color: #ffa657 !important; }
+.hljs-title { color: #d2a8ff !important; }
+.hljs-string { color: #a5d6ff !important; }
+.hljs-number { color: #79c0ff !important; }
+.hljs-comment { color: #6a737d !important; font-style: italic; }
+.hljs-variable { color: #ffa657 !important; }
+.hljs-operator { color: #ff7b72 !important; }
 
-/* Built-in functions - print, echo, etc */
-.hljs-built_in,
-.hljs-builtin-name {
-  color: #ffa657 !important;
-}
-
-/* Functions - user-defined */
-.hljs-title,
-.hljs-title.function_,
-.hljs-function .hljs-title {
-  color: #d2a8ff !important;
-}
-
-/* Strings */
-.hljs-string,
-.hljs-string strong {
-  color: #a5d6ff !important;
-}
-
-/* Numbers */
-.hljs-number,
-.hljs-number strong {
-  color: #79c0ff !important;
-}
-
-/* Comments */
-.hljs-comment,
-.hljs-comment strong {
-  color: #6a737d !important;
-  font-style: italic;
-}
-
-/* Variables */
-.hljs-variable,
-.hljs-variable strong,
-.hljs-variable.language_ {
-  color: #ffa657 !important;
-}
-
-/* Types - int, str, bool */
-.hljs-type {
-  color: #ffa657 !important;
-}
-
-/* Operators - =, +, -, *, / */
-.hljs-operator {
-  color: #ff7b72 !important;
-}
-
-/* Punctuation - brackets, commas, semicolons */
-.hljs-punctuation {
-  color: #e6edf3 !important;
-}
-
-/* Literals - true, false, null */
-.hljs-literal {
-  color: #79c0ff !important;
-}
-
-/* Class names */
-.hljs-title.class_ {
-  color: #ffa657 !important;
-}
-
-/* Parameters */
-.hljs-params {
-  color: #e6edf3 !important;
-}
-
-/* Regular expressions */
-.hljs-regexp {
-  color: #a5d6ff !important;
-}
-
-/* Tags (for HTML/XML) */
-.hljs-tag {
-  color: #ff7b72 !important;
-}
-
-/* Attribute names */
-.hljs-attr {
-  color: #d2a8ff !important;
-}
-
-/* Attribute values */
-.hljs-attribute {
-  color: #a5d6ff !important;
-}
-
-/* Doctags and specials */
-.hljs-meta {
-  color: #6a737d !important;
-}
-
-/* =========================
-   BASH/Shell SPECIFIC
-========================= */
-
-.language-bash .hljs-built_in,
-.language-shell .hljs-built_in {
-  color: #ffa657 !important; /* echo, cd, ls, etc */
-}
-
-.language-bash .hljs-variable,
-.language-shell .hljs-variable {
-  color: #ffa657 !important; /* $VAR */
-}
-
-/* =========================
-   POWERSHELL SPECIFIC
-========================= */
-
-.language-powershell .hljs-built_in {
-  color: #ffa657 !important; /* Get-Process, Write-Host, etc */
-}
-
-.language-powershell .hljs-variable {
-  color: #ffa657 !important; /* $var */
-}
-
-.language-powershell .hljs-operator {
-  color: #ff7b72 !important; /* -eq, -ne, etc */
-}
-
-/* =========================
-   PYTHON SPECIFIC
-========================= */
-
-.language-python .hljs-keyword {
-  color: #ff7b72 !important; /* def, class, import, from */
-}
-
-.language-python .hljs-built_in {
-  color: #ffa657 !important; /* print, len, range */
-}
-
-.language-python .hljs-title.function_ {
-  color: #d2a8ff !important; /* function names */
-}
+/* Language specific */
+.language-bash .hljs-built_in { color: #ffa657 !important; }
+.language-powershell .hljs-built_in { color: #ffa657 !important; }
+.language-python .hljs-keyword { color: #ff7b72 !important; }
+.language-python .hljs-built_in { color: #ffa657 !important; }
+.language-python .hljs-title.function_ { color: #d2a8ff !important; }
 
 /* =========================
    IMAGES
@@ -434,7 +312,7 @@ table {
 
 th {
   text-align: left;
-  border-bottom: 1px dashed rgba(255,255,255,0.06);
+  border-bottom: 2px dashed rgba(255,255,255,0.1);
   padding: 8px 10px;
   color: #8a8f98;
 }
@@ -449,7 +327,7 @@ td {
 ========================= */
 
 blockquote {
-  border-left: 3px solid rgba(255,255,255,0.12);
+  border-left: 4px solid rgba(255,255,255,0.15);  /* THICKER */
   padding-left: 16px;
   margin: 20px 0;
   color: rgba(255,255,255,0.65);
@@ -462,42 +340,6 @@ blockquote {
 
 hr {
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 2px solid rgba(255,255,255,0.1);  /* THICKER */
   margin: 26px 0;
-}
-
-/* =========================
-   LISTS
-========================= */
-
-ul, ol {
-  margin: 12px 0 18px 24px;
-  color: rgba(255,255,255,0.78);
-}
-
-li {
-  margin-bottom: 6px;
-}
-
-/* =========================
-   LINKS
-========================= */
-
-a {
-  color: #7aa2f7;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-a:hover {
-  color: #98cfff;
-}
-
-/* =========================
-   FOCUS STATES
-========================= */
-
-a:focus, button:focus, .copy-btn:focus {
-  outline: 2px dashed rgba(255,255,255,0.12);
-  outline-offset: 3px;
 }
