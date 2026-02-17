@@ -3,69 +3,67 @@
 
 @import "base";
 
-/* -----------------------------
-   SLEEK DARK REBUILD
-------------------------------*/
+/* ============ Typography ============ */
 
-body {
-  background: #181a1f;
+/* Page base */
+html, body {
+  background: #16171a; /* dark but not pure black */
   color: #e6e6e6;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
   font-size: 17px;
-  line-height: 1.75;
-  letter-spacing: 0.2px;
-  margin: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Container */
-.container {
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 40px 20px;
-}
-
-/* Header */
+/* Remove that top faint border — make header subtle without line */
 header {
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  padding: 25px 0;
   background: transparent;
+  border-bottom: none !important; /* kill the faint line you circled */
+  padding: 22px 0;
 }
 
+/* Site title */
 header h1 {
-  font-size: 22px;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
+  font-size: 20px;
   color: #8ab4ff;
-  letter-spacing: 0.5px;
-  text-shadow: none;
+  letter-spacing: 0.3px;
+  margin: 0 0 6px 0;
 }
 
+/* Small header links under title */
 .header-links a {
-  opacity: 0.7;
-  margin: 0 8px;
+  color: rgba(230,230,230,0.7);
   font-size: 14px;
+  margin-right: 14px;
 }
 
-.header-links a:hover {
-  opacity: 1;
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 36px 20px;
 }
 
 /* Headings */
-h1, h2, h3, h4 {
-  font-weight: 600;
+h1, h2, h3 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
   color: #ffffff;
-  margin-top: 1.6em;
-  margin-bottom: 0.6em;
+  margin: 1.4em 0 0.6em 0;
 }
 
 h2 {
-  font-size: 1.8rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding-bottom: 6px;
+  font-size: 1.84rem;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  padding-bottom: .5rem;
 }
 
-/* Paragraphs */
-p {
-  color: #d0d0d0;
+/* Body text color */
+p, li, dt, dd {
+  color: #d4d4d4;
 }
 
 /* Links */
@@ -73,112 +71,122 @@ a {
   color: #8ab4ff;
   text-decoration: none;
 }
+a:hover { text-decoration: underline; }
 
-a:hover {
-  text-decoration: underline;
-}
-
-/* Images */
+/* ============ Images ============ */
 img {
   max-width: 100%;
   border-radius: 6px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.6);
   margin: 20px 0;
 }
 
-/* -----------------------------
-   CODE BLOCKS
-------------------------------*/
+/* ============ Code Blocks ============ */
 
+/* container look — make them visually distinct */
 pre {
   position: relative;
-  background: #111317;
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 8px;
-  padding: 18px;
-  font-size: 14px;
-  overflow-x: auto;
-  margin: 25px 0;
-}
-
-/* Scrollbar thin + auto */
-pre::-webkit-scrollbar {
-  height: 6px;
-}
-
-pre::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.2);
+  background: #0f1113;            /* darker than page */
+  color: #cfe8ff;
   border-radius: 10px;
+  padding: 18px 20px;
+  margin: 24px 0;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+  font-size: 13.5px;
+  line-height: 1.45;
+  overflow: auto;
+  tab-size: 4;
 }
 
-pre::-webkit-scrollbar-track {
-  background: transparent;
+/* left accent bar to help code blocks pop */
+pre::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  background: linear-gradient(180deg, #3a8bdc, #5cc6ff);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
-/* Hide scrollbar until hover */
-pre {
-  scrollbar-width: thin;
-}
-
-pre::-webkit-scrollbar {
-  opacity: 0;
-}
-
-pre:hover::-webkit-scrollbar {
-  opacity: 1;
-}
-
-/* Inline code */
+/* inline code */
 code {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.04);
   padding: 3px 6px;
-  border-radius: 4px;
+  border-radius: 6px;
   font-family: "JetBrains Mono", monospace;
   font-size: 13px;
+  color: #dff5ff;
 }
 
-/* Copy button hidden until hover */
+/* copy button (hidden until hover) */
 .copy-btn {
   position: absolute;
   top: 8px;
-  right: 10px;
+  right: 8px;
   font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.08);
-  border: none;
-  color: #fff;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  color: #eaf6ff;
+  border: 1px solid rgba(255,255,255,0.04);
   cursor: pointer;
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transform: translateY(-2px);
+  transition: opacity .16s ease, transform .16s ease;
 }
 
+/* reveal copy button on hover */
 pre:hover .copy-btn {
   opacity: 1;
+  transform: translateY(0);
 }
 
-/* Tables */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
+/* smaller code block header (inline code label at top) */
+pre > code:first-child {
+  display:block;
 }
 
-th {
-  background: rgba(255,255,255,0.05);
-  padding: 10px;
-  text-align: left;
+/* ============ Scrollbars (thin + subtle) ============ */
+
+/* Page scrollbar (Firefox + Webkit) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.12) transparent;
+}
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* Code block scrollbar: auto-show on hover */
+pre::-webkit-scrollbar { height: 6px; }
+pre::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 6px; }
+pre:hover::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.22); }
+
+/* ============ Tables, blockquotes, etc ============ */
+blockquote {
+  border-left: 3px solid rgba(255,255,255,0.03);
+  padding-left: 12px;
+  color: #cfcfcf;
+  background: rgba(255,255,255,0.01);
+  margin: 16px 0;
+  border-radius: 6px;
 }
 
-td {
-  padding: 10px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
+table { width: 100%; border-collapse: collapse; margin: 18px 0; }
+th { background: rgba(255,255,255,0.02); padding: 10px; text-align: left; color: #dfefff; }
+td { padding: 10px; border-top: 1px solid rgba(255,255,255,0.03); }
 
-/* Footer */
-footer {
-  text-align: center;
-  font-size: 13px;
-  opacity: 0.6;
-  margin-top: 60px;
+/* small screens */
+@media (max-width: 720px) {
+  .container { padding: 22px 14px; max-width: 100%; }
+  pre { font-size: 13px; padding: 14px; }
 }
