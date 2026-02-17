@@ -35,3 +35,6 @@ year : "2026"
 sass:
   sass_dir: _sass
   style: compressed
+
+highlighter: rouge
+markdown: kramdown
