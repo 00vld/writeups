@@ -4,15 +4,15 @@
 
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
-  <!-- Permanent Browser Tab Icon (profile.png in ROOT) -->
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/profile.png' | relative_url }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/profile.png' | relative_url }}">
-  <link rel="shortcut icon" href="{{ '/profile.png' | relative_url }}">
+  <!-- GLOBAL Permanent Browser Tab Icon (profile.jpg in ROOT) -->
+  <link rel="icon" type="image/jpeg" href="{{ '/profile.jpg?v=2' | relative_url }}">
+  <link rel="shortcut icon" type="image/jpeg" href="{{ '/profile.jpg?v=2' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/profile.jpg?v=2' | relative_url }}">
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="{{ "/css/main.css" | relative_url }}">
 
-  <!-- SEO + OpenGraph (handled automatically by jekyll-seo-tag) -->
+  <!-- SEO handled automatically -->
   {% seo %}
 
   <!-- Highlight.js -->
