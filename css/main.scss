@@ -10,7 +10,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #0f1117;
+  background: #0f1117 url('/assets/bg.png') repeat;  /* FIXED: bg.png not bkg.png */
   color: #d4d7dc;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -32,17 +32,34 @@ html, body {
 ========================= */
 
 header {
-  border-bottom: 3px solid rgba(255,255,255,0.15);  /* THICKER line */
+  border-bottom: none;  /* Remove old border, we'll use gradient */
   padding: 18px 0;
   margin-bottom: 8px;
+  position: relative;
+}
+
+/* Gradient line under header - darker center, fade sides */
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.2) 20%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.2) 80%,
+    transparent 100%);
 }
 
 header h1 {
-  font-size: 24px;  /* BIGGER */
+  font-size: 24px;
   font-weight: 700;
   color: #7aa2f7;
   margin: 0;
-  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;  /* DIFFERENT font */
+  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   letter-spacing: -0.3px;
 }
 
@@ -53,13 +70,16 @@ header h1 {
 .header-links a {
   font-size: 14px;
   color: rgba(255,255,255,0.65);
-  text-decoration: none;
+  text-decoration: none;  /* NO UNDERLINE */
   margin-right: 14px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;  /* Back to body font */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  border-bottom: none;  /* Extra safety */
 }
 
 .header-links a:hover {
   color: #ffffff;
+  text-decoration: none;  /* STILL NO UNDERLINE on hover */
+  border-bottom: none;
 }
 
 /* =========================
@@ -67,28 +87,45 @@ header h1 {
 ========================= */
 
 #main_content > h1 {
-  font-size: 28px;  /* BIGGER */
+  font-size: 28px;
   margin: 10px 0 6px 0;
   font-weight: 700;
   color: #8ab4ff;
   border: none;
-  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;  /* DIFFERENT font */
+  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   letter-spacing: -0.5px;
 }
 
 /* =========================
-   SECTION HEADINGS (Enumeration) - DIFFERENT font
+   SECTION HEADINGS (Enumeration) - GRADIENT LINE
 ========================= */
 
 #main_content h2 {
-  font-size: 22px;  /* BIGGER */
+  font-size: 22px;
   font-weight: 600;
   margin: 28px 0 14px 0;
   color: #ffffff;
-  border-bottom: 3px solid rgba(255,255,255,0.15);  /* THICKER line */
-  padding-bottom: 8px;
-  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;  /* DIFFERENT font */
+  padding-bottom: 12px;
+  position: relative;
+  font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
   letter-spacing: -0.3px;
+  border-bottom: none;  /* Remove old border */
+}
+
+/* Gradient line - darker center, fade on sides */
+#main_content h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.2) 20%,
+    rgba(255,255,255,0.3) 50%,
+    rgba(255,255,255,0.2) 80%,
+    transparent 100%);
 }
 
 /* =========================
@@ -98,20 +135,30 @@ header h1 {
 .post-date,
 #main_content small {
   font-size: 13px;
-  color: rgba(255,255,255,0.35);  /* MUCH more subtle/gray */
+  color: rgba(255,255,255,0.35);
   margin-bottom: 10px;
   display: block;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* =========================
-   BODY TEXT
+   BODY TEXT - Home page only GRAYED OUT
 ========================= */
 
-#main_content p {
+/* Home page paragraphs - MUCH grayer */
+.home #main_content p,
+.archive #main_content p,
+.index #main_content p,
+body:not(.post) #main_content p {
+  color: rgba(255,255,255,0.55) !important;  /* Much more gray */
   margin: 14px 0;
-  color: rgba(255,255,255,0.78);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Post pages - normal brightness */
+.post #main_content p {
+  color: rgba(255,255,255,0.78);
+  margin: 14px 0;
 }
 
 /* =========================
@@ -179,9 +226,9 @@ pre:hover .copy-btn {
    SCROLLBARS - WORKS ON ALL BROWSERS (Chrome, Firefox, Edge)
 ========================= */
 
-/* Firefox */
+/* Firefox - hide by default */
 * {
-  scrollbar-width: none;  /* Hide by default */
+  scrollbar-width: none;
 }
 
 /* Show on hover for Firefox */
@@ -197,7 +244,7 @@ pre:hover .copy-btn {
 }
 
 :hover::-webkit-scrollbar {
-  width: 5px;  /* THINNER than before */
+  width: 5px;
   height: 5px;
 }
 
@@ -214,7 +261,16 @@ pre:hover .copy-btn {
   background: transparent;
 }
 
-/* Code block scrollbars - same behavior */
+/* Edge/IE specific */
+pre {
+  -ms-overflow-style: none;  /* Hide by default in Edge */
+}
+
+pre:hover {
+  -ms-overflow-style: auto;   /* Show on hover in Edge */
+}
+
+/* Code block scrollbars */
 pre {
   scrollbar-width: none;
 }
@@ -229,7 +285,7 @@ pre:hover {
 }
 
 pre:hover::-webkit-scrollbar {
-  width: 4px;  /* EVEN THINNER for code blocks */
+  width: 4px;
   height: 4px;
 }
 
@@ -327,7 +383,7 @@ td {
 ========================= */
 
 blockquote {
-  border-left: 4px solid rgba(255,255,255,0.15);  /* THICKER */
+  border-left: 4px solid rgba(255,255,255,0.15);
   padding-left: 16px;
   margin: 20px 0;
   color: rgba(255,255,255,0.65);
@@ -340,6 +396,12 @@ blockquote {
 
 hr {
   border: none;
-  border-bottom: 2px solid rgba(255,255,255,0.1);  /* THICKER */
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.1) 20%,
+    rgba(255,255,255,0.15) 50%,
+    rgba(255,255,255,0.1) 80%,
+    transparent 100%);
   margin: 26px 0;
 }
