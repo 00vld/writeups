@@ -4,110 +4,130 @@
 @import "base";
 
 /* =========================
-   GLOBAL RESET
+   GOOGLE FONTS
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+
+/* =========================
+   GLOBAL BASE
 ========================= */
 
 html, body {
-  background: #111318;
-  color: #e4e6eb;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0f1117;
+  color: #d1d5db;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16.5px;
-  line-height: 1.7;
+  line-height: 1.75;
+  letter-spacing: 0.2px;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Layout */
 .container {
-  max-width: 860px;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 48px 20px;
+  padding: 60px 24px;
 }
+
 
 /* =========================
    HEADER
 ========================= */
 
 header {
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding: 28px 0;
+  border-bottom: 2px solid rgba(255,255,255,0.06);
+  padding: 32px 0;
 }
 
 header h1 {
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: 700;
   font-size: 22px;
-  letter-spacing: 0.5px;
-  color: #7aa2f7;
-  margin-bottom: 6px;
+  font-weight: 600;
+  color: #8ab4ff;
+  margin: 0 0 6px 0;
 }
 
 .header-links a {
   font-size: 14px;
-  color: rgba(255,255,255,0.6);
-  margin-right: 18px;
+  color: rgba(255,255,255,0.55);
+  margin-right: 20px;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .header-links a:hover {
   color: #ffffff;
 }
 
+
 /* =========================
    POST TITLES
 ========================= */
 
-#main_content h2 {
-  font-family: "Space Grotesk", sans-serif;
-  font-weight: 700;
-  font-size: 1.9rem;
-  margin-top: 2em;
-  margin-bottom: 0.5em;
+#main_content h1 {
+  font-size: 28px;
+  font-weight: 600;
   color: #ffffff;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
+#main_content h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-bottom: 15px;
   padding-bottom: 10px;
+  border-bottom: 2px solid rgba(255,255,255,0.06);
+  color: #ffffff;
 }
 
-/* Date style */
-#main_content small,
-.post-date {
+.post-date,
+#main_content small {
   font-size: 13px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 20px;
   display: block;
-  margin-bottom: 10px;
 }
 
-/* Post preview text */
+
+/* =========================
+   BODY TEXT
+========================= */
+
 #main_content p {
-  font-size: 15.5px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.75);
+  font-size: 16px;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 18px;
 }
+
 
 /* =========================
    CODE BLOCKS
 ========================= */
 
 pre {
-  background: #0c0e12;
-  border: 1.5px solid rgba(255,255,255,0.12); /* thicker border */
-  border-radius: 10px;
-  padding: 20px;
-  margin: 28px 0;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 13.5px;
-  line-height: 1.5;
+  background: #151821;
+  border: 2px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 22px;
+  margin: 32px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 1.6;
   overflow: auto;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.7); /* depth */
+  box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+  position: relative;
 }
 
-/* Inline code */
 code {
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   background: rgba(255,255,255,0.08);
   padding: 4px 7px;
   border-radius: 6px;
   font-size: 13px;
 }
+
 
 /* =========================
    COPY BUTTON
@@ -115,10 +135,10 @@ code {
 
 .copy-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   font-size: 11px;
-  padding: 5px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
   background: rgba(255,255,255,0.08);
   color: #fff;
@@ -132,25 +152,23 @@ pre:hover .copy-btn {
   opacity: 1;
 }
 
+
 /* =========================
-   GLOBAL SCROLLBAR (AUTO HIDE)
+   SCROLLBARS (HIDE UNTIL HOVER)
 ========================= */
 
 html {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 body {
   overflow-y: auto;
 }
 
-/* Hide by default */
 body::-webkit-scrollbar {
   width: 0px;
-  transition: width 0.2s ease;
 }
 
-/* Show on hover of page */
 body:hover::-webkit-scrollbar {
   width: 10px;
 }
@@ -164,22 +182,13 @@ body::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* =========================
-   CODE BLOCK SCROLLBAR
-========================= */
+/* Code block scrollbars */
 
-pre {
-  overflow: auto;
-}
-
-/* Hidden by default */
 pre::-webkit-scrollbar {
   height: 0px;
   width: 0px;
-  transition: all 0.2s ease;
 }
 
-/* Show only when hovering code */
 pre:hover::-webkit-scrollbar {
   height: 8px;
   width: 8px;
@@ -194,24 +203,26 @@ pre::-webkit-scrollbar-track {
   background: transparent;
 }
 
+
 /* =========================
    IMAGES
 ========================= */
 
 img {
   max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 14px 40px rgba(0,0,0,0.6);
-  margin: 22px 0;
+  border-radius: 10px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.6);
+  margin: 30px 0;
 }
+
 
 /* =========================
    FOOTER
 ========================= */
 
 footer {
-  margin-top: 70px;
+  margin-top: 90px;
   text-align: center;
   font-size: 13px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.45);
 }
