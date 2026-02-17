@@ -1,3 +1,5 @@
+theme: null
+
 title: Writeups
 description: "A collection of writeups for various CTF challenges and security research findings. Hack the box, VulnHub, and more."
 author:
@@ -29,3 +31,7 @@ plugins:
 # Custom variables
 owner : "0vld"
 year : "2026"
+
+sass:
+  sass_dir: _sass
+  style: compressed
