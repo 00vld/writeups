@@ -2,6 +2,7 @@
 title: CodePartTwo
 published: true
 image: "/assets/images/CodePartTwo/cover.png"
+description: HTB CodePartTwo writeup covering enumeration and js2py sandbox escape.
 ---
 
 # Enumeration

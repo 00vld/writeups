@@ -4,35 +4,16 @@
 
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
-  <!-- ===== ADD: Favicon ===== -->
-  <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/site-social.png' | relative_url }}">
-
-  <!-- ===== ADD: Open Graph / Social Embeds ===== -->
-  {% assign og_title = page.title | default: site.title %}
-  {% assign og_description = page.description | default: page.excerpt | default: site.description %}
-  {% if page.image %}
-    {% assign og_image = page.image | relative_url %}
-  {% else %}
-    {% assign og_image = site.social_image | relative_url %}
-  {% endif %}
-
-  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
-  <meta property="og:title" content="{{ og_title }}">
-  <meta property="og:description" content="{{ og_description | strip_html | strip_newlines | truncate: 200 }}">
-  <meta property="og:image" content="{{ og_image | absolute_url }}">
-  <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:site_name" content="{{ site.title }}">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ og_title }}">
-  <meta name="twitter:description" content="{{ og_description | strip_html | strip_newlines | truncate: 200 }}">
-  <meta name="twitter:image" content="{{ og_image | absolute_url }}">
-
-  <!-- ===== YOUR ORIGINAL CODE (UNCHANGED) ===== -->
+  <!-- Permanent Browser Tab Icon (profile.png in ROOT) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/profile.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/profile.png' | relative_url }}">
+  <link rel="shortcut icon" href="{{ '/profile.png' | relative_url }}">
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="{{ "/css/main.css" | relative_url }}">
+
+  <!-- SEO + OpenGraph (handled automatically by jekyll-seo-tag) -->
+  {% seo %}
 
   <!-- Highlight.js -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
@@ -46,5 +27,4 @@
   </script>
 
   <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="ATOM Feed">
-  {% seo %}
 </head>
