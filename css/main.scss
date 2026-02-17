@@ -4,23 +4,23 @@
 @import "base";
 
 /* =========================
-   GLOBAL TYPOGRAPHY
+   GLOBAL RESET
 ========================= */
 
 html, body {
-  background: #14161a;
-  color: #e8e8e8;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 17px;
-  line-height: 1.65;
+  background: #111318;
+  color: #e4e6eb;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Layout */
 .container {
-  max-width: 880px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 48px 20px;
 }
 
 /* =========================
@@ -28,21 +28,23 @@ html, body {
 ========================= */
 
 header {
-  border-bottom: 1px solid rgba(255,255,255,0.06); /* subtle visible line */
-  padding: 24px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 28px 0;
 }
 
 header h1 {
-  font-weight: 600;
-  font-size: 20px;
-  color: #8ab4ff;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.5px;
+  color: #7aa2f7;
   margin-bottom: 6px;
 }
 
 .header-links a {
-  color: rgba(255,255,255,0.65);
   font-size: 14px;
-  margin-right: 16px;
+  color: rgba(255,255,255,0.6);
+  margin-right: 18px;
 }
 
 .header-links a:hover {
@@ -50,43 +52,35 @@ header h1 {
 }
 
 /* =========================
-   POST LIST
+   POST TITLES
 ========================= */
 
 #main_content h2 {
-  font-size: 1.75rem;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  color: #ffffff;
-  margin-top: 1.6em;
+  font-size: 1.9rem;
+  margin-top: 2em;
   margin-bottom: 0.5em;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding-bottom: 10px;
 }
 
-/* separation lines back */
-#main_content > h2 {
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding-bottom: 8px;
-}
-
-/* Dates lighter */
+/* Date style */
 #main_content small,
-#main_content .post-date {
+.post-date {
+  font-size: 13px;
+  font-weight: 400;
   color: rgba(255,255,255,0.5);
-  font-size: 14px;
+  display: block;
+  margin-bottom: 10px;
 }
 
-/* Body text lighter */
-p, li {
-  color: #d0d0d0;
-}
-
-/* Links */
-a {
-  color: #8ab4ff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+/* Post preview text */
+#main_content p {
+  font-size: 15.5px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
 }
 
 /* =========================
@@ -94,30 +88,24 @@ a:hover {
 ========================= */
 
 pre {
-  position: relative;
-  background: #0e1013;
-  border-radius: 8px;
-  padding: 18px;
-  margin: 24px 0;
-  border: 1px solid rgba(255,255,255,0.08); /* thin full border */
-  box-shadow: none; /* no glow */
-  font-family: "JetBrains Mono", ui-monospace, monospace;
+  background: #0c0e12;
+  border: 1.5px solid rgba(255,255,255,0.12); /* thicker border */
+  border-radius: 10px;
+  padding: 20px;
+  margin: 28px 0;
+  font-family: "JetBrains Mono", monospace;
   font-size: 13.5px;
   line-height: 1.5;
   overflow: auto;
-}
-
-/* remove thick accent */
-pre::before {
-  display: none;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.7); /* depth */
 }
 
 /* Inline code */
 code {
-  background: rgba(255,255,255,0.06);
-  padding: 3px 6px;
-  border-radius: 4px;
   font-family: "JetBrains Mono", monospace;
+  background: rgba(255,255,255,0.08);
+  padding: 4px 7px;
+  border-radius: 6px;
   font-size: 13px;
 }
 
@@ -127,14 +115,14 @@ code {
 
 .copy-btn {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 10px;
+  right: 10px;
   font-size: 11px;
-  padding: 4px 7px;
-  border-radius: 4px;
+  padding: 5px 8px;
+  border-radius: 6px;
   background: rgba(255,255,255,0.08);
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+  border: none;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -145,45 +133,65 @@ pre:hover .copy-btn {
 }
 
 /* =========================
-   SCROLLBARS
+   GLOBAL SCROLLBAR (AUTO HIDE)
 ========================= */
 
-/* Page scrollbar subtle */
 html {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.15) transparent;
+  scrollbar-width: none; /* Firefox */
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+body {
+  overflow-y: auto;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.15);
-  border-radius: 8px;
+/* Hide by default */
+body::-webkit-scrollbar {
+  width: 0px;
+  transition: width 0.2s ease;
 }
 
-::-webkit-scrollbar-track {
+/* Show on hover of page */
+body:hover::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.25);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Code block scrollbar auto hide */
+/* =========================
+   CODE BLOCK SCROLLBAR
+========================= */
+
+pre {
+  overflow: auto;
+}
+
+/* Hidden by default */
 pre::-webkit-scrollbar {
-  height: 6px;
+  height: 0px;
+  width: 0px;
+  transition: all 0.2s ease;
+}
+
+/* Show only when hovering code */
+pre:hover::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
 }
 
 pre::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.15);
-  border-radius: 6px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 8px;
 }
 
-pre::-webkit-scrollbar-thumb {
-  opacity: 0;
-}
-
-pre:hover::-webkit-scrollbar-thumb {
-  opacity: 1;
+pre::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /* =========================
@@ -192,9 +200,9 @@ pre:hover::-webkit-scrollbar-thumb {
 
 img {
   max-width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-  margin: 20px 0;
+  border-radius: 8px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.6);
+  margin: 22px 0;
 }
 
 /* =========================
@@ -202,8 +210,8 @@ img {
 ========================= */
 
 footer {
-  margin-top: 60px;
+  margin-top: 70px;
   text-align: center;
-  color: rgba(255,255,255,0.5);
   font-size: 13px;
+  color: rgba(255,255,255,0.5);
 }
