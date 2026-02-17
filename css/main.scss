@@ -1,25 +1,26 @@
-//
-// PROFESSIONAL DARK THEME - SERIF BODY + MONOSPACE CODE
-// Replaces hacky default colors + improves typography + code block UX
-//
+---
+---
+/*
+  main.scss — local overrides + imports
+  This file MUST have the front-matter above so Jekyll compiles it to css/main.css
+*/
 
-@import "base"; // keep your color variables
-@import "rouge-base16-dark";
+@import "base";
 
-// ---------------------
-// GLOBAL STYLES
-// ---------------------
+/* ----------------------------
+   Custom overrides (safe)
+   ----------------------------*/
 
+/* Slightly lighten overall background for better contrast but stay dark */
 body {
-  margin: 0;
-  padding: 0;
-  background: #1e1e1e; // slightly lighter than pure black
+  background: #1e1e1e; /* slightly lighter than pure black but still dark */
   color: #e0e0e0;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 18px;
   line-height: 1.6;
 }
 
+/* Layout container */
 .container {
   width: 88%;
   max-width: 900px;
@@ -27,68 +28,43 @@ body {
   padding: 30px 0;
 }
 
+/* Links */
 a {
   color: #82aaff;
   text-decoration: none;
 }
-a:hover {
-  text-decoration: underline;
-}
+a:hover { text-decoration: underline; }
 
-// ---------------------
-// HEADINGS
-// ---------------------
-
-h1, h2, h3, h4, h5, h6 {
+/* Headings (serif, more prominent) */
+h1,h2,h3,h4,h5,h6 {
   font-family: Georgia, serif;
-  font-weight: bold;
+  font-weight: 700;
+  color: $header; /* uses variable from base if available */
   margin-top: 1.2em;
   margin-bottom: 0.6em;
-  color: #8fc1ff;
 }
-
-h1 { font-size: 2.6rem; border-bottom: 2px solid #444; padding-bottom: .3em; }
+h1 { font-size: 2.6rem; border-bottom: 2px solid rgba(255,255,255,0.04); padding-bottom: .3em; }
 h2 { font-size: 2.2rem; }
 h3 { font-size: 1.8rem; }
-h4 { font-size: 1.4rem; }
-h5, h6 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: .5px; }
 
-// ---------------------
-// TYPOGRAPHY
-// ---------------------
+/* Paragraphs & lists */
+p { margin: 0 0 1em 0; color: #dadada; }
+ul,ol { margin-left: 1.4em; }
+li { margin-bottom: .5em; }
 
-p {
-  margin: 0 0 1em 0;
-  color: #dadada;
-}
-
-ul, ol {
-  margin-left: 1.4em;
-  padding-left: 0;
-}
-
-li {
-  margin-bottom: .5em;
-}
-
-// ---------------------
-// IMAGES
-// ---------------------
-
+/* Images — subtle border + shadow */
 section img,
 img {
   display: block;
   max-width: 100%;
   height: auto;
-  border: 2px solid #333;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  border: 2px solid rgba(255,255,255,0.03);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
   margin: 1.2em auto;
+  border-radius: 4px;
 }
 
-// ---------------------
-// CODE BLOCKS
-// ---------------------
-
+/* Code blocks and inline code */
 pre {
   position: relative;
   background: #20232a;
@@ -97,13 +73,13 @@ pre {
   font-family: "Courier New", monospace;
   font-size: 15px;
   border-radius: 6px;
-  border: 1px solid #444;
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.25);
   overflow-x: auto;
   margin: 1.4em 0;
 }
 
-/* INLINE CODE */
+/* inline code */
 code {
   background: #2a2d37;
   padding: 2px 4px;
@@ -112,90 +88,40 @@ code {
   color: #9cdcfe;
 }
 
-/* COPY BUTTON ON CODE BLOCKS */
+/* Copy button for code blocks (positioned inside pre) */
 pre > .copy-btn {
   position: absolute;
-  top: 6px;
-  right: 8px;
-  background: #3c3f4a;
-  color: #ddd;
+  top: 8px;
+  right: 10px;
+  background: rgba(60,63,74,0.95);
+  color: #e6eef8;
   font-size: 13px;
   padding: 4px 8px;
   border-radius: 4px;
   cursor: pointer;
-  border: 1px solid #555;
+  border: 1px solid rgba(255,255,255,0.04);
 }
-pre > .copy-btn:hover {
-  background: #4a4d59;
-}
+pre > .copy-btn:hover { background: rgba(74,77,86,0.95); }
 
-// ---------------------
-// TABLES
-// ---------------------
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.2em 0;
-}
-th {
-  background: #2a2d37;
-  color: #9ad1ff;
-  padding: .6em;
-  text-align: left;
-}
-td {
-  padding: .6em;
-  border-top: 1px solid #444;
-}
-
-// ---------------------
-// BLOCKQUOTES
-// ---------------------
-
+/* Blockquotes */
 blockquote {
-  border-left: 4px solid #555;
+  border-left: 4px solid rgba(255,255,255,0.04);
   padding-left: 1em;
   color: #c4c4c4;
   margin: 1em 0;
   font-style: italic;
-  background: #1e1e1e;
+  background: transparent;
 }
 
-// ---------------------
-// HORIZONTAL RULES
-// ---------------------
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 1.2em 0; }
+th { background: rgba(42,45,55,0.6); color: #9ad1ff; padding: .6em; text-align:left; }
+td { padding: .6em; border-top: 1px solid rgba(255,255,255,0.02); }
 
-hr {
-  border: 0;
-  border-top: 1px solid #555;
-  margin: 2em 0;
-}
+/* Footer / pagination */
+footer, .pagination { text-align:center; color:#aaa; font-size:0.9rem; padding:1em 0; }
 
-// ---------------------
-// FOOTER / PAGINATION
-// ---------------------
-
-footer,
-.pagination {
-  text-align: center;
-  color: #aaa;
-  font-size: 0.9rem;
-  padding: 1em 0;
-}
-
-// ---------------------
-// SCROLLBAR (NEAT DARK)
-// ---------------------
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-track {
-  background: #1e1e1e;
-}
+/* Nice dark scrollbar for WebKit */
+::-webkit-scrollbar { width: 8px; height:8px; }
+::-webkit-scrollbar-thumb { background: #555; border-radius:4px; }
+::-webkit-scrollbar-track { background: #1e1e1e; }
