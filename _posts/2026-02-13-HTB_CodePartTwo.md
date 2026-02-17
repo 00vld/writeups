@@ -1,6 +1,7 @@
 ---
 title: CodePartTwo
 published: true
+image: "/assets/images/CodePartTwo/cover.png"
 ---
 
 # Enumeration

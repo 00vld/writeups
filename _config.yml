@@ -7,6 +7,7 @@ author:
   url: "https://00vld.github.io/"
 
 baseurl: "/writeups"
+social_image: "https://github.com/00vld/00vld.github.io/blob/main/images/profile.jpg?raw=true"
 
 source: .
 destination: ./_site

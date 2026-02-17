@@ -4,43 +4,43 @@
 
 /* =========================
    GLOBAL RESET & TYPOGRAPHY
-   Font sizes: rem-based for consistency
-   1rem = 16px (browser default)
+   Font sizes: rem-based (1rem = 16px)
+   Following industry standards for 2026
 ========================= */
 
 :root {
-  /* Font sizes - following modern web pattern */
-  --text-xs: 0.75rem;    /* 12px - metadata, dates */
-  --text-sm: 0.875rem;   /* 14px - nav links */
-  --text-base: 1rem;     /* 16px - body text */
-  --text-md: 1.125rem;   /* 18px - emphasis */
-  --text-lg: 1.25rem;    /* 20px - small headings */
-  --text-xl: 1.5rem;     /* 24px - h3 */
-  --text-2xl: 1.875rem;  /* 30px - h2 */
-  --text-3xl: 2.25rem;   /* 36px - h1 */
-  --text-4xl: 2.5rem;    /* 40px - page title */
+  /* Font sizes - industry standard rem mapping */
+  --text-xs: 0.875rem;    /* 14px - metadata, dates, code */
+  --text-sm: 1rem;        /* 16px - body text, nav links */
+  --text-base: 1rem;      /* 16px - base reference */
+  --text-md: 1.125rem;    /* 18px - small emphasis */
+  --text-lg: 1.25rem;     /* 20px - h4/h5 */
+  --text-xl: 1.5rem;      /* 24px - h3 on mobile */
+  --text-2xl: 1.75rem;    /* 28px - h2 on mobile / h3 desktop */
+  --text-3xl: 2rem;       /* 32px - h1 mobile / h2 desktop */
+  --text-4xl: 2.5rem;     /* 40px - h1 desktop */
+  --text-5xl: 3rem;       /* 48px - large page titles */
   
-  /* Colors - Distinct heading colors */
+  /* Colors - Distinct heading colors (shades of blue) */
   --bg-primary: #0f1117;
   --bg-code: #151a22;
   --text-primary: #d4d7dc;
   --text-secondary: rgba(255,255,255,0.65);
-  --text-muted: rgba(255,255,255,0.35);
+  --text-muted: rgba(255,255,255,0.4);  /* Even more subtle */
   --text-grayed: rgba(255,255,255,0.55);
   
-  /* Heading colors - each level distinct */
-  --h1-color: #ff9e64;      /* Warm orange - stands out most */
-  --h2-color: #7aa2f7;      /* Bright blue */
-  --h3-color: #9ece6a;      /* Fresh green */
-  --h4-color: #bb9af7;      /* Soft purple */
-  --h5-color: #2ac3de;      /* Cyan */
-  --h6-color: #c0caf5;      /* Light lavender */
+  /* Heading colors - different shades of blue for consistency */
+  --h1-color: #7aa2f7;      /* Bright blue - most prominent */
+  --h2-color: #6a92e0;      /* Slightly softer blue */
+  --h3-color: #5a82c9;      /* Medium blue */
+  --h4-color: #4a72b2;      /* Deeper blue */
+  --h5-color: #3a629b;      /* Darker blue - almost blends */
+  --h6-color: #2a5284;      /* Very dark blue - subtle */
   
   /* Accent colors */
   --accent-blue: #7aa2f7;
-  --accent-light-blue: #8ab4ff;
-  --border-light: rgba(255,255,255,0.15);
-  --border-subtle: rgba(255,255,255,0.1);
+  --border-light: rgba(255,255,255,0.12);
+  --border-subtle: rgba(255,255,255,0.06);
 }
 
 html, body {
@@ -49,8 +49,8 @@ html, body {
   background: var(--bg-primary) url('/assets/bg.png') repeat;
   color: var(--text-primary);
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: var(--text-base);
-  line-height: 1.7;
+  font-size: 16px; /* Base: 16px - industry standard */
+  line-height: 1.6;
   font-weight: 400;
 }
 
@@ -75,7 +75,7 @@ header {
   border-bottom: none;
 }
 
-/* Thin gradient line under header */
+/* Thin gradient line under header - 1px consistent */
 header::after {
   content: '';
   position: absolute;
@@ -85,16 +85,16 @@ header::after {
   height: 1px;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(255,255,255,0.15) 20%,
-    rgba(255,255,255,0.25) 50%,
-    rgba(255,255,255,0.15) 80%,
+    rgba(255,255,255,0.12) 20%,
+    rgba(255,255,255,0.2) 50%,
+    rgba(255,255,255,0.12) 80%,
     transparent 100%);
 }
 
 header h1 {
-  font-size: var(--text-lg);
+  font-size: 1.25rem; /* 20px */
   font-weight: 600;
-  color: var(--h2-color);
+  color: var(--h1-color);
   margin: 0;
   font-family: "Space Grotesk", "Inter", sans-serif;
   letter-spacing: -0.3px;
@@ -105,11 +105,11 @@ header h1 {
 }
 
 .header-links a {
-  font-size: var(--text-sm);
+  font-size: 1rem; /* 16px - standard nav size */
   color: var(--text-secondary);
   text-decoration: none;
-  margin-right: 0.875rem;
-  font-family: "Inter", -apple-system, sans-serif;
+  margin-right: 1rem;
+  font-family: "Inter", sans-serif;
   position: relative;
   padding-bottom: 2px;
 }
@@ -122,7 +122,7 @@ header h1 {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--h2-color);
+  background: var(--h1-color);
   transition: width 0.3s ease;
 }
 
@@ -136,29 +136,28 @@ header h1 {
 }
 
 /* =========================
-   MODERN HEADING HIERARCHY
-   Each level has distinct color and font weight
-   Colors fade as hierarchy decreases
+   PROPER HEADING HIERARCHY
+   Each level: distinct size and color
+   Colors get darker/smaller as hierarchy decreases
 ========================= */
 
-/* Page title - most prominent */
+/* Page title - largest */
 #main_content > h1 {
-  font-size: var(--text-4xl);
-  margin: 0.625rem 0 0.5rem 0;
-  font-weight: 800;
+  font-size: 2.5rem; /* 40px - desktop standard for H1 */
+  margin: 0.5rem 0 0.75rem 0;
+  font-weight: 700;
   color: var(--h1-color);
   border: none;
   font-family: "Space Grotesk", "Inter", sans-serif;
   letter-spacing: -0.02em;
   line-height: 1.2;
-  text-transform: none;
 }
 
-/* Main section headings */
+/* Main section headings (Enumeration, Sample Page) */
 #main_content h2 {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  margin: 2rem 0 1rem 0;
+  font-size: 2rem; /* 32px - desktop standard for H2 */
+  font-weight: 650;
+  margin: 2.5rem 0 1rem 0;
   color: var(--h2-color);
   padding-bottom: 0.75rem;
   position: relative;
@@ -167,7 +166,7 @@ header h1 {
   border-bottom: none;
 }
 
-/* Thin gradient line under h2 */
+/* Thin gradient line under h2 - consistent 1px */
 #main_content h2::after {
   content: '';
   position: absolute;
@@ -177,17 +176,17 @@ header h1 {
   height: 1px;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(122,162,247,0.15) 20%,
-    rgba(122,162,247,0.25) 50%,
-    rgba(122,162,247,0.15) 80%,
+    rgba(122,162,247,0.12) 20%,
+    rgba(122,162,247,0.2) 50%,
+    rgba(122,162,247,0.12) 80%,
     transparent 100%);
 }
 
-/* Subsection headings */
+/* Subsection headings (app.py Review, etc) */
 #main_content h3 {
-  font-size: var(--text-2xl);
-  font-weight: 650;
-  margin: 1.75rem 0 0.875rem 0;
+  font-size: 1.5rem; /* 24px - standard H3 */
+  font-weight: 600;
+  margin: 2rem 0 0.75rem 0;
   color: var(--h3-color);
   font-family: "Space Grotesk", "Inter", sans-serif;
   letter-spacing: -0.01em;
@@ -195,30 +194,28 @@ header h1 {
 
 /* Minor headings */
 #main_content h4 {
-  font-size: var(--text-xl);
+  font-size: 1.25rem; /* 20px - H4 */
   font-weight: 600;
-  margin: 1.5rem 0 0.75rem 0;
+  margin: 1.5rem 0 0.5rem 0;
   color: var(--h4-color);
   font-family: "Space Grotesk", "Inter", sans-serif;
 }
 
-/* Small headings - if they're this small, no color (blend with text) */
+/* Small headings - near body size, so less color */
 #main_content h5 {
-  font-size: var(--text-lg);
+  font-size: 1.125rem; /* 18px - H5 (close to body) */
   font-weight: 600;
-  margin: 1.25rem 0 0.625rem 0;
-  color: rgba(255,255,255,0.9);
+  margin: 1.25rem 0 0.5rem 0;
+  color: var(--h5-color); /* Darker blue, less prominent */
   font-family: "Inter", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-/* Smallest headings - no color, blends with body */
+/* Smallest headings - body size, almost no color */
 #main_content h6 {
-  font-size: var(--text-base);
+  font-size: 1rem; /* 16px - same as body */
   font-weight: 600;
   margin: 1rem 0 0.5rem 0;
-  color: rgba(255,255,255,0.8);
+  color: var(--h6-color); /* Very subtle, almost blends */
   font-family: "Inter", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -230,13 +227,11 @@ header h1 {
 
 .post-date,
 #main_content small {
-  font-size: var(--text-xs);
+  font-size: 0.875rem; /* 14px - standard metadata size */
   color: var(--text-muted);
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.5rem;
   display: block;
   font-family: "Inter", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
   font-weight: 400;
 }
 
@@ -250,17 +245,17 @@ header h1 {
 .index #main_content p,
 body:not(.post) #main_content p {
   color: var(--text-grayed);
-  margin: 0.875rem 0;
-  font-size: var(--text-base);
+  margin: 1rem 0;
+  font-size: 1rem; /* 16px - standard body */
   line-height: 1.7;
   font-weight: 400;
 }
 
 /* Post pages - normal brightness */
 .post #main_content p {
-  color: rgba(255,255,255,0.78);
-  margin: 0.875rem 0;
-  font-size: var(--text-base);
+  color: rgba(255,255,255,0.82);
+  margin: 1rem 0;
+  font-size: 1rem; /* 16px - standard body */
   line-height: 1.7;
   font-weight: 400;
 }
@@ -270,12 +265,12 @@ body:not(.post) #main_content p {
 ========================= */
 
 code:not(pre code) {
-  background: rgba(138,180,255,0.15);
+  background: rgba(122,162,247,0.15);
   color: #cfe3ff;
-  padding: 0.1875rem 0.375rem;
+  padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  font-size: 0.92em;
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em; /* Slightly smaller than body */
+  font-family: "JetBrains Mono", "Menlo", "Consolas", monospace;
 }
 
 /* =========================
@@ -284,13 +279,13 @@ code:not(pre code) {
 
 pre {
   background: var(--bg-code);
-  border: 2px solid var(--border-light);
+  border: 1.5px solid var(--border-light);
   border-radius: 8px;
-  padding: 1rem;
-  margin: 1.25rem 0;
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.875rem;
-  line-height: 1.5;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  font-family: "JetBrains Mono", "Menlo", "Consolas", monospace;
+  font-size: 0.875rem; /* 14px - standard code block size */
+  line-height: 1.6;
   overflow: auto;
   position: relative;
   box-shadow: 0 1rem 2.5rem rgba(0,0,0,0.55);
@@ -300,6 +295,7 @@ pre code {
   background: transparent !important;
   padding: 0;
   border: none;
+  font-size: 0.875rem; /* 14px - consistent with pre */
 }
 
 /* =========================
@@ -308,17 +304,17 @@ pre code {
 
 .copy-btn {
   position: absolute;
-  top: 0.625rem;
+  top: 0.75rem;
   right: 0.75rem;
-  font-size: var(--text-xs);
+  font-size: 0.75rem; /* 12px - smaller */
   padding: 0.25rem 0.5rem;
-  border-radius: 6px;
+  border-radius: 4px;
   background: rgba(255,255,255,0.08);
   color: #fff;
   border: 1px solid rgba(255,255,255,0.1);
   cursor: pointer;
   opacity: 0;
-  transition: opacity 0.2s ease, background 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.2s ease, background 0.2s ease;
   z-index: 10;
   font-family: "Inter", sans-serif;
 }
@@ -329,7 +325,6 @@ pre:hover .copy-btn {
 
 .copy-btn:hover {
   background: rgba(255,255,255,0.15);
-  transform: translateY(-1px);
 }
 
 /* =========================
@@ -337,7 +332,7 @@ pre:hover .copy-btn {
 ========================= */
 
 a, button, .copy-btn {
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 a {
@@ -355,31 +350,29 @@ a:hover {
    SCROLLBARS - UNIVERSAL FIX
 ========================= */
 
-/* Firefox - hide by default */
+/* Firefox */
 * {
   scrollbar-width: none;
 }
 
-/* Show on hover for Firefox */
 *:hover {
   scrollbar-width: thin;
 }
 
-/* Chrome, Edge, Safari - hide by default */
+/* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
   background: transparent;
 }
 
-/* Show on hover */
 *:hover::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.2);
   border-radius: 5px;
 }
 
@@ -387,16 +380,7 @@ a:hover {
   background: transparent;
 }
 
-/* Edge/IE specific */
-pre {
-  -ms-overflow-style: none;
-}
-
-pre:hover {
-  -ms-overflow-style: auto;
-}
-
-/* Code block scrollbars - force hide until hover */
+/* Code block scrollbars */
 pre {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -405,7 +389,6 @@ pre {
 pre::-webkit-scrollbar {
   width: 0 !important;
   height: 0 !important;
-  background: transparent;
 }
 
 pre:hover {
@@ -419,14 +402,13 @@ pre:hover::-webkit-scrollbar {
 }
 
 pre::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.25);
   border-radius: 4px;
 }
 
-/* Force hide ALL wrapper scrollbars */
+/* Kill wrapper scrollbars */
 .highlight::-webkit-scrollbar,
-.highlight pre::-webkit-scrollbar,
-div.highlight::-webkit-scrollbar {
+.highlight pre::-webkit-scrollbar {
   width: 0 !important;
   height: 0 !important;
 }
@@ -439,12 +421,12 @@ div.highlight::-webkit-scrollbar {
   background: transparent !important;
   color: inherit !important;
   display: block;
-  overflow-x: auto;
 }
 
 pre code.hljs {
   background: transparent !important;
   padding: 0 !important;
+  font-size: 0.875rem; /* 14px - consistent */
 }
 
 .hljs-keyword { color: #ff7b72 !important; font-weight: 600; }
@@ -453,15 +435,11 @@ pre code.hljs {
 .hljs-string { color: #a5d6ff !important; }
 .hljs-number { color: #79c0ff !important; }
 .hljs-comment { color: #6a737d !important; font-style: italic; }
-.hljs-variable { color: #ffa657 !important; }
-.hljs-operator { color: #ff7b72 !important; }
 
 /* Language specific */
 .language-bash .hljs-built_in { color: #ffa657 !important; }
 .language-powershell .hljs-built_in { color: #ffa657 !important; }
 .language-python .hljs-keyword { color: #ff7b72 !important; }
-.language-python .hljs-built_in { color: #ffa657 !important; }
-.language-python .hljs-title.function_ { color: #d2a8ff !important; }
 
 /* =========================
    IMAGES
@@ -470,8 +448,7 @@ pre code.hljs {
 img {
   max-width: 100%;
   border-radius: 8px;
-  margin: 1.25rem 0;
-  box-shadow: 0 0.9375rem 2.1875rem rgba(0,0,0,0.6);
+  margin: 1.5rem 0;
 }
 
 /* =========================
@@ -479,10 +456,10 @@ img {
 ========================= */
 
 footer {
-  margin-top: 3.75rem;
+  margin-top: 4rem;
   text-align: center;
-  font-size: var(--text-xs);
-  color: rgba(255,255,255,0.45);
+  font-size: 0.875rem; /* 14px */
+  color: rgba(255,255,255,0.4);
   font-family: "Inter", sans-serif;
 }
 
@@ -493,22 +470,22 @@ footer {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.25rem 0;
+  margin: 1.5rem 0;
 }
 
 th {
   text-align: left;
   border-bottom: 2px dashed var(--border-subtle);
   padding: 0.5rem 0.625rem;
-  color: #8a8f98;
-  font-size: var(--text-sm);
+  color: #a0a8b8;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
 td {
   padding: 0.5rem 0.625rem;
   border-top: 1px solid rgba(255,255,255,0.03);
-  font-size: var(--text-sm);
+  font-size: 0.875rem;
 }
 
 /* =========================
@@ -517,16 +494,15 @@ td {
 
 blockquote {
   border-left: 4px solid var(--h3-color);
-  padding-left: 1rem;
-  margin: 1.25rem 0;
-  color: rgba(255,255,255,0.65);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  color: rgba(255,255,255,0.7);
   font-style: italic;
-  font-size: var(--text-md);
-  font-family: "Inter", sans-serif;
+  font-size: 1rem;
 }
 
 /* =========================
-   HORIZONTAL RULES - THIN LIKE REFERENCE
+   HORIZONTAL RULES - THIN 1px CONSISTENT
 ========================= */
 
 hr {
@@ -534,11 +510,11 @@ hr {
   height: 1px;
   background: linear-gradient(90deg, 
     transparent 0%, 
-    rgba(255,255,255,0.1) 20%,
-    rgba(255,255,255,0.15) 50%,
-    rgba(255,255,255,0.1) 80%,
+    rgba(255,255,255,0.08) 20%,
+    rgba(255,255,255,0.12) 50%,
+    rgba(255,255,255,0.08) 80%,
     transparent 100%);
-  margin: 1.625rem 0;
+  margin: 2rem 0;
 }
 
 /* =========================
@@ -546,11 +522,11 @@ hr {
 ========================= */
 
 ul, ol {
-  margin: 0.75rem 0 1.125rem 1.5rem;
-  color: rgba(255,255,255,0.78);
-  font-size: var(--text-base);
+  margin: 1rem 0 1rem 1.5rem;
+  color: rgba(255,255,255,0.8);
+  font-size: 1rem;
 }
 
 li {
-  margin-bottom: 0.375rem;
+  margin-bottom: 0.25rem;
 }
